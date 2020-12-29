@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+  resources :users, :only => [:show]
 
   # スタッフ
   devise_for :staffs, controllers: {
@@ -14,4 +15,9 @@ Rails.application.routes.draw do
     passwords: 'staffs/passwords',
     registrations: 'staffs/registrations'
   }
+
+  resources :staffs, :only => [:show]
+
+  # フォロー
+  resources :relationships, :only => [:create, :destroy]
 end

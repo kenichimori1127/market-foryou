@@ -5,6 +5,11 @@
         <%= "ようこそ" %>
         <%= link_to "#{current_user.nickname}さん", root_path, class: :greeting__link %>
         </div>
+      <% elsif staff_signed_in? %>
+      <div class="greeting">
+        <%= "ようこそ" %>
+        <%= link_to "#{current_staff.nickname}さん", root_path, class: :greeting__link %>
+      </div>
       <% else %>
       <div class="greeting">
       <%= link_to "ようこそゲストさん", root_path, class: :greeting__link %>
@@ -20,7 +25,6 @@
         <li><%= link_to image_tag("chat.png", class:"pop_image"), "/" %></li>
         <li><%= link_to image_tag("reservation.png", class:"pop_image"), "/" %></li>
       </ul>
-      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
     </div>
   </div>
 </main>

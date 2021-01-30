@@ -14,4 +14,7 @@ class User < ApplicationRecord
     validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は全角文字で入力してください', allow_blank: true }
     validates :phone_number
   end
+
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 end

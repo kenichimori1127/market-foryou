@@ -1,0 +1,6 @@
+<% if @staff_array.present? %>
+    <%= select_tag 'name', options_for_select(@staff_array.collect) %>
+    <%= button_to "フォローする", relationships_path, params: {staff_id: @staff_array.first[1]}, method: :post %>
+<% else %>
+    <p>フォローしていないスタッフは存在しません。</p>
+<% end %>

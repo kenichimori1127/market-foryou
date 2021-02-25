@@ -12,6 +12,9 @@
 <hr>
 <% if @messages.present? %>
   <% @messages.each do |m| %>
+    <% if m.image.attached? %>
+      <%= image_tag m.image %>
+    <% end %>
     <strong><%= m.content %></strong>
     <% if m.user_id.present? && user = User.find_by(id: m.user_id) %>
         <small>by <strong><a href="/users/<%= user.id %>"><%= user.nickname %>さん</a></strong></small>
@@ -27,6 +30,7 @@
 <%= form_for @message do |f| %>
   <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
   <%= f.hidden_field :room_id, :value => @room.id %>
+  <%= f.file_field :image %>
   <br>
   <%= f.submit "投稿する", :id => 'submit_btn' %>
 <% end %>

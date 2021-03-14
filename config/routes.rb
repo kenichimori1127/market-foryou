@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   # メッセージ
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
+
+  # カレンダーテスト
+  get 'pages/calendar'
 end
